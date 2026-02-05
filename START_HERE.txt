@@ -1,0 +1,50 @@
+=====================================
+   RANSAM HEALTHCARE PORTFOLIO
+=====================================
+
+HOW TO RUN THIS PROJECT:
+
+1. EASIEST WAY:
+   - Double-click "index.html"
+   - That's it! Website opens in your browser!
+
+2. ALTERNATIVE:
+   - Drag "index.html" into any browser window
+
+=====================================
+
+IMPORTANT:
+- Keep all files in the same folder
+- Don't separate HTML, CSS, JS, or images folder
+- Works on any computer (Windows/Mac/Linux)
+- No internet needed - runs offline
+- No installation required
+
+=====================================
+
+WHAT'S INCLUDED:
+✓ index.html  - Main website file
+✓ styles.css  - Styling
+✓ script.js   - Functionality  
+✓ images/     - Product images (17 images)
+✓ README.md   - Project documentation
+✓ HOW_TO_RUN.md - Detailed instructions
+
+=====================================
+
+FEATURES:
+• 17 Product pages
+• Smooth 3D page flip animations
+• Full-screen image display
+• Fixed navigation sidebar
+• Click images for modal view
+• Works in all modern browsers
+
+=====================================
+
+FOR DETAILED INSTRUCTIONS:
+Read "HOW_TO_RUN.md" file
+
+=====================================
+
+ENJOY! 🎉
