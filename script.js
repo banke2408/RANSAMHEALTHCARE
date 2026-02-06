@@ -50,8 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (!deferredPrompt) {
-      // Show generic instructions for browsers that don't support PWA install
-      alert('To install this app:\n\nIn your browser menu, look for "Install app" or "Add to Home screen" option.');
+      // Detect browser type
+      const userAgent = navigator.userAgent.toLowerCase();
+      let instructions = 'To install this app:\n\n';
+      
+      if (userAgent.includes('chrome')) {
+        instructions += '1. Tap the three dots (⋮) in the top right\n2. Tap "Add to Home screen" or "Install app"\n3. Tap "Add" or "Install"';
+      } else if (userAgent.includes('firefox')) {
+        instructions += '1. Tap the three dots in the address bar\n2. Tap "Install"\n3. Tap "Add" to confirm';
+      } else if (userAgent.includes('samsung')) {
+        instructions += '1. Tap the menu button\n2. Tap "Add page to"\n3. Tap "Home screen"';
+      } else {
+        instructions += '1. Look for "Install app" or "Add to Home screen" in your browser menu (⋮)\n2. Follow the prompts to install';
+      }
+      
+      alert(instructions);
       return;
     }
     // Show the install prompt
