@@ -71,7 +71,7 @@ body {
   object-fit: cover;
 }
 
-/* Home page specific - fill entire screen */
+/* Home page specific - fill entire screen with special effects */
 #home .content-area {
   position: absolute;
   width: 100vw;
@@ -86,6 +86,116 @@ body {
   height: 100%;
   object-fit: fill;
   object-position: center center;
+}
+
+/* Home Page Special Styling */
+.home-page {
+  animation: homePageFadeIn 1.5s ease-out !important;
+}
+
+.home-bg-img {
+  animation: homeBgZoom 1.8s ease-out;
+  filter: brightness(0.7);
+}
+
+.home-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background: linear-gradient(135deg, rgba(2, 6, 23, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+  pointer-events: none;
+}
+
+.home-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: #38bdf8;
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.5),
+               0 0 60px rgba(56, 189, 248, 0.3);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  animation: titleSlideIn 1.2s ease-out;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.home-subtitle {
+  font-size: 1.5rem;
+  color: #cbd5e1;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  margin-bottom: 3rem;
+  animation: subtitleFadeIn 1.5s ease-out 0.3s backwards;
+  text-align: center;
+}
+
+.home-scroll-hint {
+  font-size: 1rem;
+  color: #94a3b8;
+  animation: scrollHintPulse 2s ease-in-out 1s infinite;
+  position: absolute;
+  bottom: 3rem;
+}
+
+/* Home Page Animations */
+@keyframes homePageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes homeBgZoom {
+  from {
+    transform: scale(1.2);
+    filter: brightness(0.3) blur(5px);
+  }
+  to {
+    transform: scale(1);
+    filter: brightness(0.7) blur(0);
+  }
+}
+
+@keyframes titleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtitleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollHintPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
 }
 
 /* Layout Utilities */
@@ -455,6 +565,34 @@ li:last-child { margin-bottom: 0; }
   .modal-caption {
     font-size: 0.85rem;
     padding: 6px 12px;
+  }
+  
+  /* Home page mobile adjustments */
+  .home-title {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .home-subtitle {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .home-scroll-hint {
+    font-size: 0.75rem;
+    bottom: 1.5rem;
+  }
+}
+
+/* Tablet home page adjustments */
+@media screen and (max-width: 768px) {
+  .home-title {
+    font-size: 2.5rem;
+  }
+  
+  .home-subtitle {
+    font-size: 1.1rem;
   }
 }
 
