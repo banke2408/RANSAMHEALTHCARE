@@ -4,6 +4,27 @@ document.addEventListener('DOMContentLoaded', function() {
   let deferredPrompt;
   const installBtn = document.getElementById('installBtn');
 
+  // Check if iOS Safari
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+  
+  // Show install button if not already installed
+  if (!isStandalone) {
+    // For iOS, show button with different behavior
+    if (isIOS) {
+      installBtn.style.display = 'flex';
+      installBtn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+        Add to Home Screen
+      `;
+    } else {
+      // For Android/Desktop, show if beforeinstallprompt fires
+      installBtn.style.display = 'flex';
+    }
+  }
+
   window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
@@ -11,10 +32,26 @@ document.addEventListener('DOMContentLoaded', function() {
     deferredPrompt = e;
     // Show the install button
     installBtn.style.display = 'flex';
+    installBtn.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Install App
+    `;
   });
 
   installBtn.addEventListener('click', async () => {
+    if (isIOS) {
+      // Show iOS instructions
+      alert('To install this app:\n\n1. Tap the Share button (square with arrow)\n2. Scroll and tap "Add to Home Screen"\n3. Tap "Add" in the top right');
+      return;
+    }
+    
     if (!deferredPrompt) {
+      // Show generic instructions for browsers that don't support PWA install
+      alert('To install this app:\n\nIn your browser menu, look for "Install app" or "Add to Home screen" option.');
       return;
     }
     // Show the install prompt
