@@ -1,27 +1,27 @@
 // Service Worker for Ransam Healthcare PWA
-const CACHE_NAME = 'ransam-healthcare-v1';
+const CACHE_NAME = 'ransam-healthcare-v2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/images/Ransam Visual_page-0001.jpg',
-  '/images/Ransam Visual_page-0002.jpg',
-  '/images/Ransam Visual_page-0003.jpg',
-  '/images/Ransam Visual_page-0004.jpg',
-  '/images/Ransam Visual_page-0005.jpg',
-  '/images/Ransam Visual_page-0006.jpg',
-  '/images/Ransam Visual_page-0007.jpg',
-  '/images/Ransam Visual_page-0008.jpg',
-  '/images/Ransam Visual_page-0009.jpg',
-  '/images/Ransam Visual_page-0010.jpg',
-  '/images/Ransam Visual_page-0011.jpg',
-  '/images/Ransam Visual_page-0012.jpg',
-  '/images/Ransam Visual_page-0013.jpg',
-  '/images/Ransam Visual_page-0014.jpg',
-  '/images/Ransam Visual_page-0015.jpg',
-  '/images/Ransam Visual_page-0016.jpg',
-  '/images/Ransam Visual_page-0017.jpg'
+  '/RANSAMHEALTHCARE/',
+  '/RANSAMHEALTHCARE/index.html',
+  '/RANSAMHEALTHCARE/styles.css',
+  '/RANSAMHEALTHCARE/script.js',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0001.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0002.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0003.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0004.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0005.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0006.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0007.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0008.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0009.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0010.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0011.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0012.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0013.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0014.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0015.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0016.jpg',
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0017.jpg'
 ];
 
 // Install event - cache all resources

@@ -2,21 +2,21 @@
   "name": "Ransam Healthcare Portfolio",
   "short_name": "Ransam Healthcare",
   "description": "Quality Healthcare Solutions - Product Portfolio",
-  "start_url": "/",
+  "start_url": "/RANSAMHEALTHCARE/",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#38bdf8",
   "orientation": "any",
-  "scope": "/",
+  "scope": "/RANSAMHEALTHCARE/",
   "icons": [
     {
-      "src": "images/icon-192.png",
+      "src": "/RANSAMHEALTHCARE/images/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "images/icon-512.png",
+      "src": "/RANSAMHEALTHCARE/images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -25,7 +25,7 @@
   "categories": ["healthcare", "medical", "business"],
   "screenshots": [
     {
-      "src": "images/Ransam Visual_page-0001.jpg",
+      "src": "/RANSAMHEALTHCARE/images/Ransam Visual_page-0001.jpg",
       "sizes": "1920x1080",
       "type": "image/jpeg"
     }
