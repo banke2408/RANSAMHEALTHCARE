@@ -1,3 +1,25 @@
+// Play Hindi product brief audio
+function playBrief(id) {
+  // Pause and reset all audio elements
+  document.querySelectorAll('audio').forEach(function(a) {
+    a.pause();
+    a.currentTime = 0;
+  });
+  // Play the selected audio
+  var audio = document.getElementById(id);
+  if (audio) {
+    audio.play();
+  }
+}
+
+// Stop any playing audio (used when navigating between slides)
+function stopAllAudio() {
+  document.querySelectorAll('audio').forEach(function(a) {
+    a.pause();
+    a.currentTime = 0;
+  });
+}
+
 // Smooth page flip navigation
 document.addEventListener('DOMContentLoaded', function() {
   // PWA Install Button Handling
@@ -101,6 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const currentSlide = document.querySelector('.slide[style*="display: flex"], .slide:not([style*="display: none"])');
       
       if (currentSlide && targetSlide && currentSlide !== targetSlide) {
+        // Stop any playing audio
+        stopAllAudio();
         // Add flip-out animation to current slide
         currentSlide.classList.add('flip-out');
         

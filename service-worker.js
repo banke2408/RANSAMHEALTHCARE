@@ -1,5 +1,5 @@
 // Service Worker for Ransam Healthcare PWA
-const CACHE_NAME = 'ransam-healthcare-v2';
+const CACHE_NAME = 'ransam-healthcare-v3';
 const urlsToCache = [
   '/RANSAMHEALTHCARE/',
   '/RANSAMHEALTHCARE/index.html',
@@ -21,7 +21,23 @@ const urlsToCache = [
   '/RANSAMHEALTHCARE/images/Ransam Visual_page-0014.jpg',
   '/RANSAMHEALTHCARE/images/Ransam Visual_page-0015.jpg',
   '/RANSAMHEALTHCARE/images/Ransam Visual_page-0016.jpg',
-  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0017.jpg'
+  '/RANSAMHEALTHCARE/images/Ransam Visual_page-0017.jpg',
+  '/RANSAMHEALTHCARE/audio/RANCID-O.mp3',
+  '/RANSAMHEALTHCARE/audio/RANGESIC-P.mp3',
+  '/RANSAMHEALTHCARE/audio/RANCAL-M.mp3',
+  '/RANSAMHEALTHCARE/audio/RANSAM%20SP.mp3',
+  '/RANSAMHEALTHCARE/audio/RANSAM-DSR.mp3',
+  '/RANSAMHEALTHCARE/audio/RANZYME-C.mp3',
+  '/RANSAMHEALTHCARE/audio/R-LYSINE.mp3',
+  '/RANSAMHEALTHCARE/audio/LIVCOVIT+.mp3',
+  '/RANSAMHEALTHCARE/audio/FOLRAN-M.mp3',
+  '/RANSAMHEALTHCARE/audio/RANCOUGH-D.mp3',
+  '/RANSAMHEALTHCARE/audio/RANSWORM%20PLUS.mp3',
+  '/RANSAMHEALTHCARE/audio/RANSAM-LS%20DROP.mp3',
+  '/RANSAMHEALTHCARE/audio/RANVIT%20DROPS.mp3',
+  '/RANSAMHEALTHCARE/audio/RANZYME%20DROPS.mp3',
+  '/RANSAMHEALTHCARE/audio/RANCAL.mp3',
+  '/RANSAMHEALTHCARE/audio/RANSWORM.mp3'
 ];
 
 // Install event - cache all resources
