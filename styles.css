@@ -548,7 +548,7 @@ li:last-child { margin-bottom: 0; }
   }
   
   #home .content-area {
-    width: calc(100vw - 160px);
+    width: 100vw;
     margin-left: 0;
   }
   
@@ -776,7 +776,7 @@ li:last-child { margin-bottom: 0; }
   }
   
   #home .content-area {
-    width: calc(100vw - 130px);
+    width: 100vw;
     height: 100vh;
     margin-left: 0;
   }
