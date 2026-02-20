@@ -58,6 +58,7 @@ body {
   height: 100vh;
   overflow: hidden;
   padding: 0 !important;
+  margin-left: 220px;
 }
 
 .content-area img {
@@ -78,6 +79,7 @@ body {
   height: 100vh;
   top: 0;
   left: 0;
+  margin-left: 0;
   z-index: 1;
 }
 
@@ -257,7 +259,7 @@ body {
   align-items: center;
   text-align: center;
   padding: 2rem;
-  padding-right: 220px;
+  padding-left: 220px;
 }
 
 .center img {
@@ -359,7 +361,7 @@ li:last-child { margin-bottom: 0; }
 /* Navigation Sidebar */
 .nav-sidebar {
   position: fixed;
-  right: 0;
+  left: 0;
   top: 0;
   height: 100vh;
   width: 220px;
@@ -368,7 +370,7 @@ li:last-child { margin-bottom: 0; }
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  border-left: 2px solid #38bdf8;
+  border-right: 2px solid #38bdf8;
   overflow-y: auto;
   z-index: 100;
 }
@@ -390,7 +392,7 @@ li:last-child { margin-bottom: 0; }
 .nav-btn:hover {
   background-color: #38bdf8;
   color: #0f172a;
-  transform: translateX(-5px);
+  transform: translateX(5px);
 }
 
 .nav-btn.active {
@@ -542,10 +544,12 @@ li:last-child { margin-bottom: 0; }
   
   .content-area {
     width: calc(100vw - 160px);
+    margin-left: 160px;
   }
   
   #home .content-area {
     width: calc(100vw - 160px);
+    margin-left: 0;
   }
   
   .nav-btn {
@@ -555,7 +559,7 @@ li:last-child { margin-bottom: 0; }
   
   .center {
     padding: 1.5rem;
-    padding-right: 160px;
+    padding-left: 160px;
   }
   
   .home-title {
@@ -606,6 +610,7 @@ li:last-child { margin-bottom: 0; }
   .content-area {
     width: 100vw;
     height: 75vh;
+    margin-left: 0;
   }
   
   .content-area img {
@@ -621,6 +626,7 @@ li:last-child { margin-bottom: 0; }
   #home .content-area {
     width: 100vw;
     height: 75vh;
+    margin-left: 0;
   }
   
   #home .content-area img {
@@ -686,10 +692,12 @@ li:last-child { margin-bottom: 0; }
   
   .content-area {
     height: 72vh;
+    margin-left: 0;
   }
   
   #home .content-area {
     height: 72vh;
+    margin-left: 0;
   }
   
   .home-overlay {
@@ -742,9 +750,9 @@ li:last-child { margin-bottom: 0; }
 @media screen and (max-width: 900px) and (orientation: landscape) {
   .nav-sidebar {
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
-    left: auto;
+    right: auto;
     bottom: 0;
     width: 130px;
     height: 100vh;
@@ -752,7 +760,7 @@ li:last-child { margin-bottom: 0; }
     flex-direction: column;
     flex-wrap: nowrap;
     border-top: none;
-    border-left: 2px solid #38bdf8;
+    border-right: 2px solid #38bdf8;
     overflow-y: auto;
   }
   
@@ -764,11 +772,13 @@ li:last-child { margin-bottom: 0; }
   .content-area {
     width: calc(100vw - 130px);
     height: 100vh;
+    margin-left: 130px;
   }
   
   #home .content-area {
     width: calc(100vw - 130px);
     height: 100vh;
+    margin-left: 0;
   }
   
   .home-overlay {
@@ -784,7 +794,7 @@ li:last-child { margin-bottom: 0; }
   }
   
   .center {
-    padding-right: 130px;
+    padding-left: 130px;
   }
 }
 
@@ -792,7 +802,7 @@ li:last-child { margin-bottom: 0; }
 .audio-btn {
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   z-index: 10;
   display: inline-flex;
   align-items: center;
@@ -828,7 +838,7 @@ li:last-child { margin-bottom: 0; }
 @media (max-width: 768px) {
   .audio-btn {
     bottom: 70px;
-    left: 10px;
+    right: 10px;
     padding: 8px 16px;
     font-size: 12px;
   }
@@ -837,7 +847,7 @@ li:last-child { margin-bottom: 0; }
 @media (max-width: 480px) {
   .audio-btn {
     bottom: 65px;
-    left: 8px;
+    right: 8px;
     padding: 6px 14px;
     font-size: 11px;
   }
