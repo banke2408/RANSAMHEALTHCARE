@@ -22,6 +22,102 @@ function stopAllAudio() {
 
 // Smooth page flip navigation
 document.addEventListener('DOMContentLoaded', function() {
+  // === SWIPE NAVIGATION FOR MOBILE ===
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+  const SWIPE_THRESHOLD = 50;
+  const SWIPE_RESTRAINT = 100; // max vertical movement allowed
+
+  // Ordered list of slide IDs for swipe navigation
+  const slideOrder = [];
+  document.querySelectorAll('.slide').forEach(function(slide) {
+    if (slide.id) slideOrder.push(slide.id);
+  });
+
+  function getCurrentSlideIndex() {
+    var current = document.querySelector('.slide[style*="display: flex"], .slide:not([style*="display: none"])');
+    if (current && current.id) {
+      return slideOrder.indexOf(current.id);
+    }
+    return 0;
+  }
+
+  function navigateToSlide(targetId) {
+    var targetSlide = document.getElementById(targetId);
+    var currentSlide = document.querySelector('.slide[style*="display: flex"], .slide:not([style*="display: none"])');
+    
+    if (currentSlide && targetSlide && currentSlide !== targetSlide) {
+      stopAllAudio();
+      currentSlide.classList.add('flip-out');
+      
+      setTimeout(function() {
+        currentSlide.style.display = 'none';
+        currentSlide.classList.remove('flip-out');
+        
+        targetSlide.style.display = 'flex';
+        targetSlide.style.animation = 'none';
+        setTimeout(function() {
+          targetSlide.style.animation = '';
+        }, 10);
+        
+        document.querySelectorAll('.nav-btn').forEach(function(btn) { btn.classList.remove('active'); });
+        document.querySelectorAll('a[href="#' + targetId + '"]').forEach(function(btn) { btn.classList.add('active'); });
+        
+        // Scroll active nav button into view on mobile
+        var activeBtn = document.querySelector('.nav-sidebar .nav-btn.active');
+        if (activeBtn && window.innerWidth <= 768) {
+          activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+        
+        window.scrollTo({ top: 0 });
+      }, 700);
+    }
+  }
+
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    var diffX = touchEndX - touchStartX;
+    var diffY = touchEndY - touchStartY;
+
+    // Only register horizontal swipes (not vertical scrolls or taps on nav)
+    if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(diffY) < SWIPE_RESTRAINT) {
+      var currentIdx = getCurrentSlideIndex();
+      
+      if (diffX < 0) {
+        // Swipe left → next slide
+        if (currentIdx < slideOrder.length - 1) {
+          navigateToSlide(slideOrder[currentIdx + 1]);
+        }
+      } else {
+        // Swipe right → previous slide
+        if (currentIdx > 0) {
+          navigateToSlide(slideOrder[currentIdx - 1]);
+        }
+      }
+    }
+  }
+
+  // Show swipe hint on first visit (mobile only)
+  if (window.innerWidth <= 768 && !sessionStorage.getItem('swipeHintShown')) {
+    var hint = document.createElement('div');
+    hint.className = 'swipe-hint';
+    hint.textContent = '← Swipe to navigate →';
+    document.body.appendChild(hint);
+    sessionStorage.setItem('swipeHintShown', '1');
+  }
+
   // PWA Install Button Handling
   let deferredPrompt;
   const installBtn = document.getElementById('installBtn');
@@ -119,34 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', function(e) {
       e.preventDefault();
       const targetId = this.getAttribute('href').substring(1);
-      const targetSlide = document.getElementById(targetId);
-      const currentSlide = document.querySelector('.slide[style*="display: flex"], .slide:not([style*="display: none"])');
-      
-      if (currentSlide && targetSlide && currentSlide !== targetSlide) {
-        // Stop any playing audio
-        stopAllAudio();
-        // Add flip-out animation to current slide
-        currentSlide.classList.add('flip-out');
-        
-        setTimeout(() => {
-          currentSlide.style.display = 'none';
-          currentSlide.classList.remove('flip-out');
-          
-          // Show and animate target slide
-          targetSlide.style.display = 'flex';
-          targetSlide.style.animation = 'none';
-          setTimeout(() => {
-            targetSlide.style.animation = '';
-          }, 10);
-          
-          // Update active state
-          document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-          document.querySelectorAll(`a[href="#${targetId}"]`).forEach(btn => btn.classList.add('active'));
-          
-          // Scroll to top
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 700);
-      }
+      navigateToSlide(targetId);
     });
   });
 
