@@ -57,7 +57,10 @@ html {
 /* Slide Container */
 .slide {
   width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   height: 100vh;
+  height: 100dvh;
   margin: 0;
   padding: 0 !important;
   display: flex;
@@ -70,8 +73,7 @@ html {
 .content-area {
   position: relative;
   width: calc(100% - var(--nav-width));
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
   overflow: hidden;
   padding: 0 !important;
   margin-left: var(--nav-width);
@@ -84,8 +86,7 @@ html {
 .content-area img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -104,8 +105,7 @@ html {
 
 #home .content-area img {
   width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -480,8 +480,8 @@ li:last-child { margin-bottom: 0; }
 .clickable-img {
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -609,6 +609,7 @@ li:last-child { margin-bottom: 0; }
 @media screen and (max-width: 768px) {
   :root {
     --nav-width: 0px;
+    --nav-height-mobile: 25vh;
   }
 
   /* Navigation at the bottom - wrapped rows like original */
@@ -620,7 +621,7 @@ li:last-child { margin-bottom: 0; }
     top: auto;
     width: 100%;
     height: auto;
-    max-height: 25vh;
+    max-height: var(--nav-height-mobile);
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -647,31 +648,36 @@ li:last-child { margin-bottom: 0; }
     transform: none !important;
   }
   
-  /* Content fills from top to above nav bar */
-  .content-area {
+  /* Each section fills exactly the viewport */
+  .slide {
     width: 100%;
     height: 100vh;
     height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 0 !important;
+  }
+
+  /* Content fills from top down to just above the nav bar */
+  .content-area {
+    width: 100%;
+    height: calc(100vh - var(--nav-height-mobile));
+    height: calc(100dvh - var(--nav-height-mobile));
     margin-left: 0;
+    padding: 0 !important;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     background-color: var(--color-bg-elevated, #020617);
+    overflow: hidden;
   }
 
   .content-area img {
     display: block;
     width: 100%;
-    height: auto;
-    max-height: 100%;
+    height: 100%;
     object-fit: contain;
     position: static;
-  }
-  
-  .slide {
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
   }
   
   /* Home page - full screen behind nav */
@@ -688,8 +694,7 @@ li:last-child { margin-bottom: 0; }
   #home .content-area img {
     display: block;
     width: 100%;
-    height: auto;
-    max-height: 100%;
+    height: 100%;
     object-fit: contain;
     position: static;
   }
@@ -741,8 +746,12 @@ li:last-child { margin-bottom: 0; }
 
 /* Small phones (up to 480px) */
 @media screen and (max-width: 480px) {
+  :root {
+    --nav-height-mobile: 28vh;
+  }
+
   .nav-sidebar {
-    max-height: 28vh;
+    max-height: var(--nav-height-mobile);
     padding: 0.4rem;
     padding-bottom: calc(0.4rem + var(--safe-bottom));
     gap: 0.25rem;
@@ -754,8 +763,8 @@ li:last-child { margin-bottom: 0; }
   }
   
   .content-area {
-    height: 100vh;
-    height: 100dvh;
+    height: calc(100vh - var(--nav-height-mobile));
+    height: calc(100dvh - var(--nav-height-mobile));
     margin-left: 0;
   }
   
@@ -853,18 +862,15 @@ li:last-child { margin-bottom: 0; }
     height: 100vh;
     height: 100dvh;
     margin-left: var(--nav-width);
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .content-area img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    max-height: none;
-    object-fit: cover;
-    object-position: left top;
+    object-fit: contain;
   }
   
   #home .content-area {
@@ -941,7 +947,7 @@ li:last-child { margin-bottom: 0; }
 /* Mobile adjustments for audio button */
 @media (max-width: 768px) {
   .audio-btn {
-    bottom: 28vh;
+    bottom: calc(var(--nav-height-mobile, 25vh) + 12px);
     right: 10px;
     padding: 8px 16px;
     font-size: 12px;
@@ -950,7 +956,7 @@ li:last-child { margin-bottom: 0; }
 
 @media (max-width: 480px) {
   .audio-btn {
-    bottom: 30vh;
+    bottom: calc(var(--nav-height-mobile, 28vh) + 10px);
     right: 8px;
     padding: 7px 14px;
     font-size: 11px;
