@@ -85,8 +85,9 @@ html {
   bottom: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: left top;
+  object-fit: contain;
+  object-position: top center;
+  background-color: var(--color-bg-elevated, #020617);
 }
 
 /* Home page specific - fill entire screen with special effects */
@@ -105,8 +106,9 @@ html {
 #home .content-area img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: left top;
+  object-fit: contain;
+  object-position: top center;
+  background-color: var(--color-bg-elevated, #020617);
 }
 
 /* Ensure nav sidebar floats on top of home image */
