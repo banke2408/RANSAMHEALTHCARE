@@ -1,5 +1,5 @@
 // Service Worker for Ransam Healthcare PWA
-const CACHE_NAME = 'ransam-healthcare-v12';
+const CACHE_NAME = 'ransam-healthcare-v13';
 
 const coreAssets = [
   '/RANSAMHEALTHCARE/',

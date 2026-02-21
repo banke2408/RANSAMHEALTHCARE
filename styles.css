@@ -75,19 +75,18 @@ html {
   overflow: hidden;
   padding: 0 !important;
   margin-left: var(--nav-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-elevated, #020617);
 }
 
 .content-area img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   object-fit: contain;
-  object-position: top center;
-  background-color: var(--color-bg-elevated, #020617);
 }
 
 /* Home page specific - fill entire screen with special effects */
@@ -105,10 +104,9 @@ html {
 
 #home .content-area img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   object-fit: contain;
-  object-position: top center;
-  background-color: var(--color-bg-elevated, #020617);
 }
 
 /* Ensure nav sidebar floats on top of home image */
@@ -655,9 +653,16 @@ li:last-child { margin-bottom: 0; }
     height: 100vh;
     height: 100dvh;
     margin-left: 0;
+    display: block;
   }
 
   .content-area img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
     object-fit: cover;
     object-position: center top;
   }
@@ -680,6 +685,12 @@ li:last-child { margin-bottom: 0; }
   }
   
   #home .content-area img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
     object-fit: cover;
     object-position: center top;
   }
@@ -843,9 +854,16 @@ li:last-child { margin-bottom: 0; }
     height: 100vh;
     height: 100dvh;
     margin-left: var(--nav-width);
+    display: block;
   }
 
   .content-area img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
     object-fit: cover;
     object-position: left top;
   }
