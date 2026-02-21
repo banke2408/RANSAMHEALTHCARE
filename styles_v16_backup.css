@@ -1,12 +1,5 @@
 /* ============================================================
-   RANSAM HEALTHCARE – Responsive Portfolio v17
-   ============================================================
-   Breakpoints:
-     Desktop       : > 1024px  (sidebar nav on left)
-     Tablet        : 601–1024px (sidebar nav on left, narrower)
-     Mobile        : ≤ 600px  (bottom nav, stacked layout)
-     Small phone   : ≤ 400px  (tighter spacing)
-     Landscape     : ≤ 900px landscape (sidebar nav on left)
+   RANSAM HEALTHCARE – Responsive Portfolio v16
    ============================================================ */
 
 /* ===== DESIGN TOKENS ===== */
@@ -17,13 +10,11 @@
   --fw-semi: 600;
   --fw-normal: 400;
 
-  /* Navigation sizing – overridden per breakpoint */
   --nav-width: 200px;
-  --nav-height-mobile: 0px;          /* used only on mobile (bottom nav) */
+  --nav-height-mobile: 0px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top: env(safe-area-inset-top, 0px);
 
-  /* Spacing scale */
   --sp-xs: 0.25rem;
   --sp-sm: 0.5rem;
   --sp-md: 1rem;
@@ -31,7 +22,6 @@
   --sp-xl: 2rem;
   --sp-2xl: 3rem;
 
-  /* Fluid typography */
   --fs-hero: clamp(2rem, 5vw, 4.5rem);
   --fs-h1: clamp(1.5rem, 3vw, 2.25rem);
   --fs-h2: clamp(1.25rem, 2.5vw, 1.75rem);
@@ -84,11 +74,12 @@ h1, h2, h3, h4, h5, h6 {
   line-height: var(--lh-heading);
   color: var(--c-text);
 }
+
 h1 { font-size: var(--fs-h1); }
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
 
-/* Medical text */
+/* Medical text: bullets, indications */
 .product-text ul,
 .product-text ol {
   margin-left: 1.25em;
@@ -96,20 +87,25 @@ h3 { font-size: var(--fs-h3); }
   font-size: var(--fs-body);
   color: var(--c-text-secondary);
 }
+
 .product-text li {
   margin-bottom: 0.4em;
   padding-left: 0.25em;
 }
+
 .product-text li:last-child { margin-bottom: 0; }
+
 .product-text p {
   margin-bottom: 0.75em;
   color: var(--c-text-secondary);
 }
+
 .product-text strong,
 .product-text b {
   color: var(--c-text);
   font-weight: var(--fw-semi);
 }
+
 .product-name {
   font-size: var(--fs-h2);
   font-weight: var(--fw-bold);
@@ -117,6 +113,7 @@ h3 { font-size: var(--fs-h3); }
   margin-bottom: var(--sp-sm);
   letter-spacing: 0.02em;
 }
+
 .product-subtitle {
   font-size: var(--fs-small);
   color: var(--c-text-muted);
@@ -126,14 +123,12 @@ h3 { font-size: var(--fs-h3); }
 }
 
 /* ================================================================
-   SLIDE  –  min-height instead of fixed height so tall screens
-             don't get empty dark space.
+   SLIDE
    ================================================================ */
 .slide {
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  height: auto;
+  height: 100vh;
+  height: 100dvh;
   margin: 0;
   padding: 0 !important;
   display: flex;
@@ -144,14 +139,12 @@ h3 { font-size: var(--fs-h3); }
 }
 
 /* ================================================================
-   CONTENT-AREA  (image-only product slides)
+   CONTENT-AREA  (image-only products – current layout)
    ================================================================ */
 .content-area {
   position: relative;
   width: calc(100% - var(--nav-width));
-  min-height: 100vh;
-  min-height: 100dvh;
-  height: auto;
+  height: 100%;
   margin-left: var(--nav-width);
   padding: 0 !important;
   display: flex;
@@ -163,8 +156,8 @@ h3 { font-size: var(--fs-h3); }
 
 .content-area img.clickable-img {
   display: block;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -175,14 +168,13 @@ h3 { font-size: var(--fs-h3); }
 }
 
 /* ================================================================
-   PRODUCT-GRID  (image + text two-column)
+   PRODUCT-GRID  (image + text two-column layout)
+   Drop-in replacement for .content-area when you want text.
    ================================================================ */
 .product-grid {
   position: relative;
   width: calc(100% - var(--nav-width));
-  min-height: 100vh;
-  min-height: 100dvh;
-  height: auto;
+  height: 100%;
   margin-left: var(--nav-width);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -190,6 +182,7 @@ h3 { font-size: var(--fs-h3); }
   background-color: var(--c-bg-deep);
   overflow: hidden;
 }
+
 .product-grid .product-image {
   display: flex;
   align-items: center;
@@ -198,6 +191,7 @@ h3 { font-size: var(--fs-h3); }
   background-color: var(--c-bg-deep);
   padding: var(--sp-md);
 }
+
 .product-grid .product-image img {
   max-width: 100%;
   max-height: 100%;
@@ -207,7 +201,10 @@ h3 { font-size: var(--fs-h3); }
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-.product-grid .product-image img:hover { transform: scale(1.03); }
+
+.product-grid .product-image img:hover {
+  transform: scale(1.03);
+}
 
 .product-grid .product-text {
   display: flex;
@@ -219,6 +216,7 @@ h3 { font-size: var(--fs-h3); }
   scrollbar-width: thin;
   scrollbar-color: var(--c-bg-muted) transparent;
 }
+
 .product-grid .product-text::-webkit-scrollbar { width: 4px; }
 .product-grid .product-text::-webkit-scrollbar-thumb {
   background: var(--c-bg-muted);
@@ -231,16 +229,17 @@ h3 { font-size: var(--fs-h3); }
 #home .content-area {
   position: absolute;
   width: 100% !important;
-  min-height: 100% !important;
   height: 100% !important;
   top: 0; left: 0; right: 0; bottom: 0;
   margin-left: 0 !important;
   z-index: 1;
 }
+
 #home .content-area img {
   width: 100%; height: 100%;
   object-fit: contain;
 }
+
 #home .nav-sidebar { z-index: 200; }
 
 .home-page {
@@ -249,10 +248,12 @@ h3 { font-size: var(--fs-h3); }
   width: 100% !important;
   overflow: hidden;
 }
+
 .home-bg-img {
   animation: homeBgFlashZoom 2s ease-out;
   filter: brightness(0.7);
 }
+
 .home-overlay {
   position: absolute;
   top: 0; left: 0;
@@ -266,6 +267,7 @@ h3 { font-size: var(--fs-h3); }
   pointer-events: none;
   animation: overlayFlashIn 2s ease-out;
 }
+
 .home-title {
   font-size: var(--fs-hero);
   font-weight: 800;
@@ -277,6 +279,7 @@ h3 { font-size: var(--fs-h3); }
   text-align: center;
   line-height: 1.2;
 }
+
 .home-subtitle {
   font-size: clamp(1rem, 2vw, 1.5rem);
   color: var(--c-text-secondary);
@@ -286,6 +289,7 @@ h3 { font-size: var(--fs-h3); }
   animation: subtitleQuickFadeIn 0.7s ease-out 0.4s backwards;
   text-align: center;
 }
+
 .install-btn {
   background: linear-gradient(135deg, #38bdf8, #0ea5e9);
   color: #fff;
@@ -304,12 +308,15 @@ h3 { font-size: var(--fs-h3); }
   pointer-events: auto;
   margin-bottom: 2rem;
 }
+
 .install-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 30px rgba(56,189,248,0.6);
 }
+
 .install-btn:active { transform: translateY(-1px); }
 .install-btn svg { stroke-width: 2.5; }
+
 .home-scroll-hint {
   font-size: 1rem;
   color: var(--c-text-muted);
@@ -337,7 +344,7 @@ h3 { font-size: var(--fs-h3); }
 }
 
 /* ================================================================
-   NAVIGATION SIDEBAR  (desktop default)
+   NAVIGATION SIDEBAR
    ================================================================ */
 .nav-sidebar {
   position: fixed;
@@ -354,6 +361,7 @@ h3 { font-size: var(--fs-h3); }
   z-index: 100;
   -webkit-overflow-scrolling: touch;
 }
+
 .nav-btn {
   background-color: var(--c-bg-muted);
   color: var(--c-text-secondary);
@@ -368,11 +376,13 @@ h3 { font-size: var(--fs-h3); }
   display: block;
   border-radius: 4px;
 }
+
 .nav-btn:hover {
   background-color: var(--c-accent);
   color: var(--c-accent-fg);
   transform: translateX(4px);
 }
+
 .nav-btn.active {
   background-color: var(--c-accent);
   color: var(--c-accent-fg);
@@ -386,9 +396,12 @@ h3 { font-size: var(--fs-h3); }
   padding: var(--sp-xl);
   padding-left: var(--nav-width);
 }
+
 .center img { max-width: 90%; max-height: 90%; object-fit: contain; }
+
 .row { flex-direction: row; }
 .col { flex-direction: column; }
+
 .p-4 { padding: 1rem; }
 .p-6 { padding: 1.5rem; }
 .p-8 { padding: 2rem; }
@@ -421,6 +434,7 @@ h3 { font-size: var(--fs-h3); }
     transform-origin: left center;
   }
 }
+
 @keyframes flipOut {
   0% {
     transform: perspective(2500px) rotateY(0deg) translateZ(0) scale(1);
@@ -433,6 +447,7 @@ h3 { font-size: var(--fs-h3); }
     transform-origin: left center;
   }
 }
+
 .slide {
   animation: flipIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-origin: left center;
@@ -440,6 +455,7 @@ h3 { font-size: var(--fs-h3); }
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
+
 .slide.flip-out {
   animation: flipOut 0.7s cubic-bezier(0.36, 0, 0.66, -0.56);
   transform-origin: left center;
@@ -459,12 +475,15 @@ h3 { font-size: var(--fs-h3); }
   align-items: center;
   animation: fadeIn 0.3s ease;
 }
+
 .image-modal.active { display: flex; }
+
 .modal-content {
   max-width: 95%; max-height: 95%;
   object-fit: contain;
   animation: zoomIn 0.3s ease;
 }
+
 .modal-close {
   position: absolute;
   top: 20px; right: 40px;
@@ -473,7 +492,9 @@ h3 { font-size: var(--fs-h3); }
   transition: color 0.3s ease;
   z-index: 10000;
 }
+
 .modal-close:hover { color: var(--c-accent); }
+
 .modal-caption {
   position: absolute;
   bottom: 20px; left: 50%;
@@ -482,6 +503,7 @@ h3 { font-size: var(--fs-h3); }
   background-color: rgba(0,0,0,0.7);
   padding: 10px 20px; border-radius: 5px;
 }
+
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes zoomIn {
   from { transform: scale(0.8); opacity: 0; }
@@ -489,7 +511,7 @@ h3 { font-size: var(--fs-h3); }
 }
 
 /* ================================================================
-   AUDIO BUTTON  (desktop default – bottom-right of content)
+   AUDIO BUTTON
    ================================================================ */
 .audio-btn {
   position: absolute;
@@ -511,19 +533,21 @@ h3 { font-size: var(--fs-h3); }
   animation: audioPulse 2s ease-in-out infinite;
   -webkit-tap-highlight-color: transparent;
 }
+
 .audio-btn:hover {
   transform: scale(1.08);
   box-shadow: 0 6px 20px rgba(56,189,248,0.6);
 }
+
 .audio-btn:active { transform: scale(0.95); }
+
 @keyframes audioPulse {
   0%, 100% { box-shadow: 0 4px 15px rgba(56,189,248,0.4); }
   50% { box-shadow: 0 4px 25px rgba(56,189,248,0.7); }
 }
 
 /* ================================================================
-   TABLET  (601px – 1024px)
-   Sidebar nav stays on left, just narrower.
+   TABLET (768px – 1024px)
    ================================================================ */
 @media screen and (max-width: 1024px) {
   :root { --nav-width: 150px; }
@@ -544,23 +568,19 @@ h3 { font-size: var(--fs-h3); }
 }
 
 /* ================================================================
-   MOBILE  (≤ 600px)
-   Nav moves to fixed bottom bar. Content stacks vertically.
-   Images scale naturally: max-width:100%, height:auto.
-   Bottom padding clears the fixed nav.
+   MOBILE (≤768px)  nav → bottom, single-column stack
    ================================================================ */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   :root {
     --nav-width: 0px;
     --nav-height-mobile: 25vh;
   }
 
-  /* ---- NAV BAR → fixed bottom ---- */
+  /* NAV BAR AT BOTTOM */
   .nav-sidebar {
     position: fixed;
     bottom: 0; left: 0; right: 0; top: auto;
-    width: 100%;
-    height: auto;
+    width: 100%; height: auto;
     max-height: var(--nav-height-mobile);
     flex-direction: row;
     flex-wrap: wrap;
@@ -570,12 +590,12 @@ h3 { font-size: var(--fs-h3); }
     gap: 0.3rem;
     border-right: none;
     border-top: 2px solid var(--c-accent);
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: auto; overflow-x: hidden;
     z-index: 1000;
     -webkit-overflow-scrolling: touch;
     border-radius: 0;
   }
+
   .nav-btn {
     flex: 0 0 auto;
     font-size: 0.58rem;
@@ -584,119 +604,96 @@ h3 { font-size: var(--fs-h3); }
     transform: none !important;
     border-radius: 3px;
   }
+
   .nav-btn:hover { transform: none !important; }
 
-  /* ---- SLIDE ---- */
+  /* SLIDE */
   .slide {
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    height: auto;
+    height: 100vh; height: 100dvh;
     padding: 0 !important;
-    padding-bottom: var(--nav-height-mobile) !important;
   }
 
-  /* ---- CONTENT AREA (image-only) ----
-     Image scales naturally, never cropped.
-     Enough bottom room so audio btn doesn't sit under the nav. */
+  /* CONTENT AREA (image-only) */
   .content-area {
     width: 100%;
-    min-height: auto;
-    height: auto;
+    height: calc(100vh - var(--nav-height-mobile));
+    height: calc(100dvh - var(--nav-height-mobile));
     margin-left: 0;
-    padding: var(--sp-sm) !important;
-    padding-bottom: calc(var(--nav-height-mobile) + 60px) !important;
-    align-items: flex-start;
-    justify-content: center;
+    padding: 0 !important;
   }
 
   .content-area img.clickable-img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
+    width: 100%; height: 100%;
     object-fit: contain;
   }
 
-  /* ---- PRODUCT GRID → vertical stack ---- */
+  /* PRODUCT GRID → vertical stack */
   .product-grid {
     width: 100%;
-    min-height: auto;
-    height: auto;
+    height: calc(100vh - var(--nav-height-mobile));
+    height: calc(100dvh - var(--nav-height-mobile));
     margin-left: 0;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    padding-bottom: calc(var(--nav-height-mobile) + 20px);
+    grid-template-rows: 55% 1fr;
   }
-  .product-grid .product-image {
-    padding: var(--sp-sm);
-  }
-  .product-grid .product-image img {
-    max-width: 100%;
-    height: auto;
-  }
+
+  .product-grid .product-image { padding: var(--sp-sm); }
+
   .product-grid .product-text {
     padding: var(--sp-md) var(--sp-md) var(--sp-lg);
     font-size: var(--fs-small);
   }
+
   .product-grid .product-text ul,
   .product-grid .product-text ol {
     margin-left: 1em;
     font-size: var(--fs-small);
     line-height: 1.55;
   }
+
   .product-grid .product-text li { margin-bottom: 0.25em; }
+
   .product-name { font-size: clamp(1rem, 4vw, 1.3rem); }
   .product-subtitle { font-size: 0.7rem; margin-bottom: var(--sp-sm); }
 
-  /* ---- HOME ---- */
-  #home .slide {
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-bottom: 0 !important;
-  }
+  /* HOME */
   #home .content-area {
     width: 100% !important;
     height: 100% !important;
-    min-height: 100% !important;
     margin-left: 0 !important;
-    padding: 0 !important;
-    align-items: center;
   }
-  #home .content-area img {
-    width: 100%; height: 100%;
-    object-fit: contain;
-  }
+
+  #home .content-area img { width: 100%; height: 100%; object-fit: contain; }
+
   .home-title { font-size: clamp(1.6rem, 8vw, 2.5rem); padding: 0 1rem; }
   .home-subtitle { font-size: clamp(0.9rem, 3vw, 1.1rem); padding: 0 1rem; }
   .home-overlay { height: 100%; }
   .home-scroll-hint { bottom: 3.5rem; font-size: 0.85rem; }
   .install-btn { font-size: 1rem; padding: 0.8rem 1.5rem; }
 
-  /* ---- CENTER (thank-you) ---- */
+  /* CENTER (thank-you) */
   .center {
     padding: var(--sp-md);
     padding-bottom: calc(var(--nav-height-mobile) + var(--sp-md));
     padding-left: var(--sp-md);
   }
 
-  /* ---- AUDIO BUTTON – sits above the bottom nav ---- */
+  /* AUDIO BUTTON */
   .audio-btn {
     bottom: calc(var(--nav-height-mobile) + 12px);
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+    right: 10px; padding: 8px 16px; font-size: 12px;
   }
 
-  /* ---- MODAL ---- */
+  /* MODAL */
   .modal-close { top: 10px; right: 20px; font-size: 32px; }
   .modal-caption { font-size: 0.9rem; padding: 8px 15px; bottom: 10px; }
 }
 
 /* ================================================================
-   SMALL PHONES  (≤ 400px)
-   Tighter nav, smaller text, more nav space.
+   SMALL PHONES (≤480px)
    ================================================================ */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
   :root { --nav-height-mobile: 28vh; }
 
   .nav-sidebar {
@@ -705,23 +702,27 @@ h3 { font-size: var(--fs-h3); }
     padding-bottom: calc(0.35rem + var(--safe-bottom));
     gap: 0.2rem;
   }
-  .nav-btn { font-size: 0.5rem; padding: 0.3rem 0.42rem; }
+
+  .nav-btn { font-size: 0.52rem; padding: 0.32rem 0.45rem; }
 
   .content-area {
-    padding-bottom: calc(var(--nav-height-mobile) + 60px) !important;
+    height: calc(100vh - var(--nav-height-mobile));
+    height: calc(100dvh - var(--nav-height-mobile));
   }
 
   .product-grid {
-    padding-bottom: calc(var(--nav-height-mobile) + 20px);
+    height: calc(100vh - var(--nav-height-mobile));
+    height: calc(100dvh - var(--nav-height-mobile));
+    grid-template-rows: 50% 1fr;
   }
 
   .product-grid .product-text {
     padding: var(--sp-sm) var(--sp-sm) var(--sp-md);
   }
+
   .product-grid .product-text ul,
   .product-grid .product-text ol {
-    font-size: 0.75rem;
-    line-height: 1.5;
+    font-size: 0.75rem; line-height: 1.5;
   }
 
   #home .content-area { height: 100% !important; }
@@ -733,9 +734,7 @@ h3 { font-size: var(--fs-h3); }
 
   .audio-btn {
     bottom: calc(var(--nav-height-mobile) + 10px);
-    right: 8px;
-    padding: 7px 14px;
-    font-size: 11px;
+    right: 8px; padding: 7px 14px; font-size: 11px;
   }
 
   .modal-close { top: 8px; right: 12px; font-size: 28px; }
@@ -747,69 +746,67 @@ h3 { font-size: var(--fs-h3); }
 }
 
 /* ================================================================
-   LANDSCAPE PHONES  (≤ 900px, landscape)
-   Sidebar nav returns to left side.
+   LANDSCAPE PHONES (≤900px landscape)
    ================================================================ */
 @media screen and (max-width: 900px) and (orientation: landscape) {
   :root {
     --nav-width: 110px;
     --nav-height-mobile: 0px;
   }
+
   .nav-sidebar {
     position: fixed;
     left: 0; top: 0; right: auto; bottom: 0;
     width: var(--nav-width);
     height: 100vh; height: 100dvh;
     max-height: none;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: column; flex-wrap: nowrap;
     border-top: none;
     border-right: 2px solid var(--c-accent);
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 0.3rem 0.25rem;
-    gap: 0.15rem;
+    overflow-x: hidden; overflow-y: auto;
+    padding: 0.3rem 0.25rem; gap: 0.15rem;
   }
+
   .nav-sidebar::-webkit-scrollbar { display: none; }
+
   .nav-btn {
     width: 100%; text-align: left;
     font-size: 0.48rem; padding: 0.28rem 0.35rem;
     white-space: nowrap;
   }
+
   .content-area,
   .product-grid {
     width: calc(100% - var(--nav-width));
-    min-height: 100vh; min-height: 100dvh;
+    height: 100vh; height: 100dvh;
     margin-left: var(--nav-width);
-    padding-bottom: 0 !important;
   }
-  .content-area {
-    align-items: center;
-  }
-  .content-area img.clickable-img {
-    width: 100%; height: auto; max-height: 100vh; max-height: 100dvh;
-    object-fit: contain;
-  }
+
+  .content-area img.clickable-img { width: 100%; height: 100%; object-fit: contain; }
+
   .product-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
   }
+
   .product-grid .product-text {
     padding: var(--sp-sm) var(--sp-md);
     font-size: 0.75rem;
   }
+
   #home .content-area {
     width: 100% !important;
     height: 100% !important;
     margin-left: 0 !important;
-    padding: 0 !important;
   }
+
   .home-overlay { height: 100%; }
   .home-title { font-size: 1.8rem; }
   .home-subtitle { font-size: 0.8rem; }
   .center { padding-left: var(--nav-width); }
   .install-btn { font-size: 0.8rem; padding: 0.5rem 1rem; margin-bottom: 0.5rem; }
   .home-scroll-hint { font-size: 0.7rem; bottom: 0.5rem; }
+
   .audio-btn { bottom: 12px; right: 12px; padding: 6px 12px; font-size: 11px; }
 }
 
@@ -825,9 +822,11 @@ h3 { font-size: var(--fs-h3); }
   animation: swipeHintFade 3s ease-in-out forwards;
   display: none;
 }
-@media (max-width: 600px) {
+
+@media (max-width: 768px) {
   .swipe-hint { display: block; }
 }
+
 @keyframes swipeHintFade {
   0% { opacity: 0; }
   20% { opacity: 1; }

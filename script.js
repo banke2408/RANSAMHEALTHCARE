@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Scroll active nav button into view on mobile
         var activeBtn = document.querySelector('.nav-sidebar .nav-btn.active');
-        if (activeBtn && window.innerWidth <= 768) {
+        if (activeBtn && window.innerWidth <= 600) {
           activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
         
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Show swipe hint on first visit (mobile only)
-  if (window.innerWidth <= 768 && !sessionStorage.getItem('swipeHintShown')) {
+  if (window.innerWidth <= 600 && !sessionStorage.getItem('swipeHintShown')) {
     var hint = document.createElement('div');
     hint.className = 'swipe-hint';
     hint.textContent = '← Swipe to navigate →';
